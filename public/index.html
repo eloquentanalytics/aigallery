@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Gallery</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .status {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .api-test {
+            background: #065f46;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 AI Gallery</h1>
+
+        <div class="status">
+            <h2>✅ Frontend Deployed Successfully!</h2>
+            <p>The static frontend is now working on Vercel.</p>
+        </div>
+
+        <div class="api-test">
+            <h3>🔧 API Test</h3>
+            <button onclick="testAPI()">Test API Connection</button>
+            <div id="api-result"></div>
+        </div>
+
+        <div class="status">
+            <h3>🚀 Next Steps</h3>
+            <p>1. ✅ Frontend working</p>
+            <p>2. ✅ API working</p>
+            <p>3. 🔄 Build React gallery interface</p>
+        </div>
+    </div>
+
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = 'Testing...';
+
+            try {
+                // Test API with bypass token
+                const response = await fetch('/api/health?x-vercel-protection-bypass=f47ac10b058cc043720a56700e02b2c3');
+                const data = await response.json();
+
+                resultDiv.innerHTML = `
+                    <p style="color: #10b981;">✅ API Connected!</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p style="color: #ef4444;">❌ API Error:</p>
+                    <pre>${error.message}</pre>
+                `;
+            }
+        }
+
+        // Auto-test API on load
+        window.onload = () => {
+            setTimeout(testAPI, 1000);
+        };
+    </script>
+</body>
+</html>
