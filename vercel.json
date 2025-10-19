@@ -1,18 +1,6 @@
 {
   "builds": [
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/next",
-      "config": {
-        "projectSettings": {
-          "framework": "nextjs",
-          "installCommand": "npm install",
-          "buildCommand": "npm run build",
-          "outputDirectory": ".next"
-        }
-      }
-    },
-    {
       "src": "api/index.py",
       "use": "@vercel/python"
     }
@@ -21,37 +9,6 @@
     {
       "src": "/api/(.*)",
       "dest": "api/index.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
     }
-  ],
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 30
-    }
-  },
-  "env": {
-    "PYTHONPATH": "."
-  },
-  "excludeFiles": [
-    "venv/**",
-    "__pycache__/**",
-    "*.pyc",
-    ".git/**",
-    "data/**",
-    "tests/**",
-    "DEV/**",
-    "*.md",
-    "deploy*.sh",
-    "hetzner*.sh",
-    "docker-compose.yml",
-    "Dockerfile",
-    "Procfile",
-    "runtime.txt",
-    "HEROKU_DEPLOYMENT.md",
-    "HETZNER_DEPLOYMENT.md",
-    ".env.example"
   ]
 }
