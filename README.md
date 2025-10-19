@@ -44,6 +44,16 @@ python app_simple.py
 
 The application will be available at: http://localhost:8000
 
+## 🚀 Quick Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/eloquentanalytics/aigallery)
+
+1. Click the deploy button above
+2. Connect your GitHub account
+3. Deploy instantly!
+
+See [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) for detailed setup instructions.
+
 ## 📁 Project Structure
 
 ```
